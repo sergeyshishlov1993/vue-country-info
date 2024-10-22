@@ -23,8 +23,6 @@ async function selectYear(year: number) {
     selectedYear.value,
     route.params.id as string,
   )
-
-  console.log('year', selectedYear.value)
 }
 </script>
 

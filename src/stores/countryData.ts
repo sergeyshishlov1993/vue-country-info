@@ -24,7 +24,7 @@ export const useCountryData = defineStore('CountryData', () => {
 
   async function getAllCountries() {
     try {
-      const response = await axios.get(
+      const response = await axios.get<Country[]>(
         `${import.meta.env.VITE_BASE_URL}AvailableCountries`,
       )
 
@@ -36,7 +36,7 @@ export const useCountryData = defineStore('CountryData', () => {
 
   async function getNextPublicHolidays(countryCode: string) {
     try {
-      const response = await axios.get(
+      const response = await axios.get<Holiday[]>(
         `${import.meta.env.VITE_BASE_URL}NextPublicHolidays/${countryCode}`,
       )
 
@@ -59,12 +59,21 @@ export const useCountryData = defineStore('CountryData', () => {
         shuffled.value[i].countryCode,
       )
 
-      const countryWithHoliday = {
-        country: shuffled.value[i],
-        holiday: nextHoliday[0],
-      }
+      if (nextHoliday && nextHoliday.length > 0) {
+        const countryWithHoliday: CountryWithHoliday = {
+          country: shuffled.value[i],
+          holiday: nextHoliday[0],
+        }
 
-      randomCountry.value.push(countryWithHoliday)
+        randomCountry.value.push(countryWithHoliday)
+      } else {
+        const countryWithHoliday: CountryWithHoliday = {
+          country: shuffled.value[i],
+          holiday: null,
+        }
+
+        randomCountry.value.push(countryWithHoliday)
+      }
     }
   }
 
@@ -75,13 +84,11 @@ export const useCountryData = defineStore('CountryData', () => {
 
   async function getHolidayForCountry(year: string, countryCode: string) {
     try {
-      const response = await axios.get(
+      const response = await axios.get<Holiday[]>(
         `${import.meta.env.VITE_BASE_URL}PublicHolidays/${year}/${countryCode}`,
       )
 
       holidaysPerYear.value = response.data
-
-      console.log('response', response)
     } catch (error) {
       console.error('error', error)
     }
