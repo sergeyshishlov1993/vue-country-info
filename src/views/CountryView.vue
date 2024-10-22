@@ -16,7 +16,7 @@ onMounted(async () => {
   )
 })
 
-async function selectYear(year: 'string') {
+async function selectYear(year: string) {
   selectedYear.value = year
 
   await store.getHolidayForCountry(

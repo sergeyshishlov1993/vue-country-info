@@ -70,8 +70,8 @@ function goToCountryPage(countryCode: string, name: string) {
         v-for="country in store.randomCountry"
         :key="country.country.countryCode"
         :country="country.country.name"
-        :holiday="country.holiday.name"
-        :date="country.holiday.date"
+        :holiday="country.holiday?.name"
+        :date="country.holiday?.date"
         @click="goToCountryPage(country.country.countryCode)"
       />
     </div>
