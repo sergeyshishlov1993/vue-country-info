@@ -7,7 +7,7 @@ import UiBlockCard from '../components/Block/UiBlockCard.vue'
 import UiTextH1 from '../components/Ui/UiTextH1.vue'
 const store = useCountryData()
 const route = useRoute()
-const selectedYear = ref<number>(2024)
+const selectedYear = ref<string>('2024')
 
 onMounted(async () => {
   await store.getHolidayForCountry(
@@ -16,7 +16,7 @@ onMounted(async () => {
   )
 })
 
-async function selectYear(year: number) {
+async function selectYear(year: 'string') {
   selectedYear.value = year
 
   await store.getHolidayForCountry(
