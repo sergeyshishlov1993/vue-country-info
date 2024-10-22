@@ -34,7 +34,7 @@ export const useCountryData = defineStore('CountryData', () => {
     }
   }
 
-  async function getNextPublicHolidays(countryCode) {
+  async function getNextPublicHolidays(countryCode: string) {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_BASE_URL}NextPublicHolidays/${countryCode}`,
@@ -73,7 +73,7 @@ export const useCountryData = defineStore('CountryData', () => {
     await collectData()
   }
 
-  async function getHolidayForCountry(year, countryCode) {
+  async function getHolidayForCountry(year: string, countryCode: string) {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_BASE_URL}PublicHolidays/${year}/${countryCode}`,

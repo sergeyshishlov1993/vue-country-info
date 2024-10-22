@@ -23,7 +23,10 @@ const filterContriesBySearch = computed(() => {
 })
 
 function handleSearch(event: Event) {
-  searchQuery.value = event.target.value
+  const target = event.target as HTMLInputElement | null
+  if (target) {
+    searchQuery.value = target.value
+  }
 }
 
 function goToCountryPage(countryCode: string, name: string) {
