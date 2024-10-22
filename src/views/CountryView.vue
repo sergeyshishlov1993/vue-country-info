@@ -51,7 +51,7 @@ async function selectYear(year: string) {
       <ui-block-card
         class="holiday_card"
         v-for="country in store.holidaysPerYear"
-        :key="country.countryCode"
+        :key="country.name"
         :country="country.name"
         :date="country.date"
       />
@@ -61,7 +61,7 @@ async function selectYear(year: string) {
       <button
         type="button"
         class="btn btn-secondary"
-        :class="{ 'btn-danger': year == selectedYear }"
+        :class="{ 'btn-danger': String(year) == selectedYear }"
         v-for="year in Array.from({ length: 11 }, (v, i) => 2020 + i)"
         :key="year"
         @click="selectYear(String(year))"
