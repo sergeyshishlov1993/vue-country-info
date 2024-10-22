@@ -2,11 +2,25 @@ import { ref } from 'vue'
 import axios from 'axios'
 import { defineStore } from 'pinia'
 
+interface Country {
+  name: string
+  countryCode: string
+}
+
+interface Holiday {
+  name: string
+  date: string
+}
+
+interface CountryWithHoliday {
+  country: Country
+  holiday: Holiday | null
+}
 export const useCountryData = defineStore('CountryData', () => {
-  const allContries = ref([])
-  const randomCountry = ref([])
-  const shuffled = ref([])
-  const holidaysPerYear = ref([])
+  const allContries = ref<Country[]>([])
+  const randomCountry = ref<CountryWithHoliday[]>([])
+  const shuffled = ref<Country[]>([])
+  const holidaysPerYear = ref<Holiday[]>([])
 
   async function getAllCountries() {
     try {
@@ -26,7 +40,7 @@ export const useCountryData = defineStore('CountryData', () => {
         `${import.meta.env.VITE_BASE_URL}NextPublicHolidays/${countryCode}`,
       )
 
-      return response.data
+      return response.data as Holiday[]
     } catch (error) {
       console.error('error', error)
     }

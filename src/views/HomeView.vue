@@ -22,11 +22,11 @@ const filterContriesBySearch = computed(() => {
   )
 })
 
-function handleSearch(event) {
+function handleSearch(event: Event) {
   searchQuery.value = event.target.value
 }
 
-function goToCountryPage(countryCode, name) {
+function goToCountryPage(countryCode: string, name: string) {
   router.push(`/country/${countryCode}?country=${name}`)
 }
 </script>
