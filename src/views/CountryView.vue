@@ -64,7 +64,7 @@ async function selectYear(year: string) {
         :class="{ 'btn-danger': year == selectedYear }"
         v-for="year in Array.from({ length: 11 }, (v, i) => 2020 + i)"
         :key="year"
-        @click="selectYear(year)"
+        @click="selectYear(String(year))"
       >
         {{ year }}
       </button>

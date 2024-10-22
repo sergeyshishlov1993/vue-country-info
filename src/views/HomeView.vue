@@ -72,7 +72,9 @@ function goToCountryPage(countryCode: string, name: string) {
         :country="country.country.name"
         :holiday="country.holiday?.name"
         :date="country.holiday?.date"
-        @click="goToCountryPage(country.country.countryCode)"
+        @click="
+          goToCountryPage(country.country.countryCode, country.country.name)
+        "
       />
     </div>
   </div>
