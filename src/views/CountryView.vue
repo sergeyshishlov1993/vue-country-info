@@ -45,10 +45,10 @@ async function selectYear(year: string) {
   </nav>
 
   <div class="country">
-    <ui-text-h1>Country</ui-text-h1>
+    <UiTextH1>Country</UiTextH1>
 
     <div class="holiday__list">
-      <ui-block-card
+      <UiBlockCard
         class="holiday_card"
         v-for="country in store.holidaysPerYear"
         :key="country.name"

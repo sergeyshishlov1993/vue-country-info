@@ -13,9 +13,9 @@ const props = defineProps({
 <template>
   <div class="card text">
     <div class="card-body">
-      <ui-text-h2>{{ props.country }}</ui-text-h2>
-      <ui-text-h2>{{ props.holiday }}</ui-text-h2>
-      <ui-text-h2>{{ props.date }}</ui-text-h2>
+      <UiTextH2>{{ props.country }}</UiTextH2>
+      <UiTextH2>{{ props.holiday }}</UiTextH2>
+      <UiTextH2>{{ props.date }}</UiTextH2>
     </div>
   </div>
 </template>

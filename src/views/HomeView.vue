@@ -37,23 +37,23 @@ function goToCountryPage(countryCode: string, name: string) {
 <template>
   <div class="wrapper">
     <div class="wrapper__country">
-      <ui-input
+      <UiInput
         @input="handleSearch"
         :value="searchQuery"
         placeholder="search countries"
       />
 
-      <ui-text-h1> Countries List </ui-text-h1>
+      <UiTextH1> Countries List </UiTextH1>
 
       <div
         style="margin-top: 50px; color: red"
         v-if="!filterContriesBySearch.length"
       >
-        <ui-text-h1>Country not found !</ui-text-h1>
+        <UiTextH1>Country not found !</UiTextH1>
       </div>
 
       <div class="country__list" v-else>
-        <ui-block-card
+        <UiBlockCard
           v-for="country in filterContriesBySearch"
           :key="country.countryCode"
           :country="country.name"
@@ -64,9 +64,9 @@ function goToCountryPage(countryCode: string, name: string) {
     </div>
 
     <div class="wrapper__country_random">
-      <ui-text-h1> Random Countries Widget </ui-text-h1>
+      <Ui-Text-H1> Random Countries Widget </Ui-Text-H1>
 
-      <ui-block-card
+      <UiBlockCard
         v-for="country in store.randomCountry"
         :key="country.country.countryCode"
         :country="country.country.name"
